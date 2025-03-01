@@ -34,8 +34,8 @@ for frontend
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 📊 Model Details
-Architecture: ResNet / LSTM / 3D-CNN (based on implementation)
-Dataset: Used UCF101/Kinetics
+Architecture:LSTM-CNN (based on implementation)
+Dataset: Used UCF50
 Evaluation Metrics: Accuracy, Precision, Recall
 
 🛠️ Tech Stack
