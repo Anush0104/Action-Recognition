@@ -18,17 +18,20 @@ Action-Recognition/
 
 ⚡ Installation & Setup
 1️⃣ Clone the Repository
+
 git clone https://github.com/Anush0104/Action-Recognition.git
 cd Action-Recognition
 
 2️⃣ Install Dependencies
+
 pip install -r requirements.txt  # Install backend dependencies
 
 3️⃣ Run the Project
-python app.py
 
+python app.py
 for frontend 
 ./upload_video
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 📊 Model Details
 Architecture: ResNet / LSTM / 3D-CNN (based on implementation)
@@ -37,7 +40,7 @@ Evaluation Metrics: Accuracy, Precision, Recall
 
 🛠️ Tech Stack
 Backend: Python (Flask)
-Frontend: Html and Css
+Frontend: Html, Css and Js
 Machine Learning: PyTorch / TensorFlow
 
 🚀 Future Improvements
