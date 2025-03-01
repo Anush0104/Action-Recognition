@@ -29,9 +29,10 @@ pip install -r requirements.txt  # Install backend dependencies
 3️⃣ Run the Project
 
 python app.py
+
 for frontend 
 ./upload_video
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 📊 Model Details
 Architecture:LSTM-CNN (based on implementation)
