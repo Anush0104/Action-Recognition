@@ -207,78 +207,7 @@ features_train, features_test, labels_train, labels_test = train_test_split(
 
 # Define the ConvLSTM model
 # Define the ConvLSTM model
-def create_convlstm_model():
-    model = Sequential()
-
-    # ConvLSTM layer 1
-    model.add(ConvLSTM2D(filters=4, kernel_size=(3, 3), activation='tanh',
-                         data_format="channels_last", recurrent_dropout=0.2,
-                         return_sequences=True, input_shape=(SEQUENCE_LENGTH, IMAGE_HEIGHT, IMAGE_WIDTH, 3)))
-    model.add(MaxPooling3D(pool_size=(1, 2, 2), padding='same', data_format='channels_last'))
-    model.add(TimeDistributed(Dropout(0.2)))
-
-    # ConvLSTM layer 2
-    model.add(ConvLSTM2D(filters=8, kernel_size=(3, 3), activation='tanh',
-                         data_format="channels_last", recurrent_dropout=0.2,
-                         return_sequences=True))
-    model.add(MaxPooling3D(pool_size=(1, 2, 2), padding='same', data_format='channels_last'))
-    model.add(TimeDistributed(Dropout(0.2)))
-
-    # ConvLSTM layer 3
-    model.add(ConvLSTM2D(filters=14, kernel_size=(3, 3), activation='tanh',
-                         data_format="channels_last", recurrent_dropout=0.2,
-                         return_sequences=True))
-    model.add(MaxPooling3D(pool_size=(1, 2, 2), padding='same', data_format='channels_last'))
-    model.add(TimeDistributed(Dropout(0.2)))
-
-    # ConvLSTM layer 4
-    model.add(ConvLSTM2D(filters=16, kernel_size=(3, 3), activation='tanh',
-                         data_format="channels_last", recurrent_dropout=0.2,
-                         return_sequences=False))
-
-    # Remove MaxPooling3D, replace with Flatten
-    model.add(Flatten())
-
-    # Fully connected layer
-    model.add(Dense(len(CLASSES_LIST), activation="softmax"))
-
-    model.summary()
-    return model
-
-# Create the model
-convlstm_model = create_convlstm_model()
-print("Model created successfully")
-
-# Plot the model architecture
-plot_model(convlstm_model, to_file='convlstm_model_structure_plot.png', show_shapes=True, show_layer_names=True)
-
-# Compile the model
-early_stopping_callback = EarlyStopping(
-    monitor='val_loss', patience=10, mode='min', restore_best_weights=True
-)
-convlstm_model.compile(
-    loss='categorical_crossentropy', optimizer='Adam', metrics=["accuracy"]
-)
-
-# Train the model
-convlstm_model_training_history = convlstm_model.fit(
-    x=features_train, y=labels_train, epochs=50, batch_size=4,
-    shuffle=True, validation_split=0.2, callbacks=[early_stopping_callback]
-)
-
-# Evaluate the model
-model_evaluation_loss, model_evaluation_accuracy = convlstm_model.evaluate(features_test, labels_test)
-
-# Save the model
-date_time_format = '%Y_%m_%d'
-current_date_time_dt = dt.datetime.now()
-current_date_time_string = dt.datetime.strftime(current_date_time_dt, date_time_format)
-
-model_file_name = f'convlstm_model__Date_Time_{current_date_time_string}__Loss_{model_evaluation_loss:.4f}__Accuracy_{model_evaluation_accuracy:.4f}.h5'
-convlstm_model.save(model_file_name)
-
-print(f"Model saved as {model_file_name}")
-
+define model 
 # Save the model
 model_file_name = f'convlstm_model__Date_Time_{current_date_time_string}__Loss_{model_evaluation_loss:.4f}__Accuracy_{model_evaluation_accuracy:.4f}.h5'
 convlstm_model.save(model_file_name)
