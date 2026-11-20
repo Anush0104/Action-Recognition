@@ -79,11 +79,3 @@ Integrate Real-time webcam action recognition.
 
 Add more action classes for better generalization.
 
-
-🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to improve.
-
-📜 License
-
-This project is licensed under the MIT License.
